@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/librato/disco-java.svg?branch=master)](https://travis-ci.org/librato/disco-java)
 
 # Disco
@@ -62,3 +63,7 @@ service.stop();
 
 Run tests with `mvn test`. **Note**: tests assume you have Zookeeper running on
 `localhost:2181`
+=======
+# q-microservice
+Q-Microservice: Utilities of microservice: thrift pool client, service discovery (client side)
+>>>>>>> 56efc28ab7984a5dc5c6134ecb47e591b22b94fa
