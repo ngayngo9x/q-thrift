@@ -5,15 +5,15 @@ import org.apache.thrift.protocol.TCompactProtocol;
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransport;
 
-import com.pheu.service.QServiceDiscover;
-import com.pheu.service.QServiceDiscoverImpl;
-import com.pheu.service.ServiceDiscoveryException;
-import com.pheu.thrift.QFailoverPoolProvider;
-import com.pheu.thrift.QProtocolProvider;
-import com.pheu.thrift.QRoundRobinSelectorStrategy;
-import com.pheu.thrift.QThriftExec;
-import com.pheu.thrift.QThriftProvider;
-import com.pheu.thrift.QThriftProviderImpl;
+import com.pheu.service.client.QServiceDiscover;
+import com.pheu.service.client.QServiceDiscoverImpl;
+import com.pheu.service.client.ServiceDiscoveryException;
+import com.pheu.thrift.client.QFailoverPoolProvider;
+import com.pheu.thrift.client.QProtocolProvider;
+import com.pheu.thrift.client.QRoundRobinSelectorStrategy;
+import com.pheu.thrift.client.QThriftExec;
+import com.pheu.thrift.client.QThriftProvider;
+import com.pheu.thrift.client.QThriftProviderImpl;
 
 public class QThriftClient {
 

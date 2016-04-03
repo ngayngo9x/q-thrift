@@ -1,4 +1,4 @@
-package com.pheu.thrift;
+package com.pheu.thrift.client;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;

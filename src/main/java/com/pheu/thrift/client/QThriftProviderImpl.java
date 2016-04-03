@@ -1,8 +1,8 @@
-package com.pheu.thrift;
+package com.pheu.thrift.client;
 
 import com.github.phantomthief.thrift.client.pool.ThriftConnectionPoolProvider;
 import com.google.common.base.Preconditions;
-import com.pheu.service.QServiceDiscover;
+import com.pheu.service.client.QServiceDiscover;
 
 public class QThriftProviderImpl<P> implements QThriftProvider<P> {
 

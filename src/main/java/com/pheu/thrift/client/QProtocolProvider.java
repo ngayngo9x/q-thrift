@@ -1,4 +1,4 @@
-package com.pheu.thrift;
+package com.pheu.thrift.client;
 
 import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransport;

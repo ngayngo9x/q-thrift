@@ -1,4 +1,4 @@
-package com.pheu.service;
+package com.pheu.service.client;
 
 public class ServiceDiscoveryException extends Exception {
 
