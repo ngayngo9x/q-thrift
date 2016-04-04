@@ -15,7 +15,7 @@
 		<javassist.version>3.20.0-GA</javassist.version>
 		<junit.version>4.12</junit.version>
 		<netty.version>4.0.35.Final</netty.version>
-		<q-service-discovery.version>0.0.1-SNAPSHOT</q-service-discovery.version>
+		<q-service-discover.version>0.0.1-SNAPSHOT</q-service-discover.version>
 	</properties>
 
 	<dependencies>
@@ -63,8 +63,8 @@
 		
         <dependency>
         	<groupId>com.pheu.service</groupId>
-        	<artifactId>q-service-discovery</artifactId>
-        	<version>${q-service-discovery.version}</version>
+        	<artifactId>q-service-discover</artifactId>
+        	<version>${q-service-discover.version}</version>
         </dependency>
 	</dependencies>
 	<build>
