@@ -39,17 +39,42 @@ public class QThriftClient2 {
 			}
 		});
 		
+		callService(message, client);
+		callService(message, client);
+		callService(message, client);
+		callService(message, client);
+		callService(message, client);
+		
+		/*
+Time: 6665
+Time: 5810
+Time: 6140
+Time: 5893
+Time: 5982 
+
+Time: 6838
+Time: 6181
+Time: 6287
+Time: 5905
+Time: 6039
+		 
+		 * */
+
+		discover.close();
+
+	}
+
+	private static void callService(String message, TestThriftService.Iface client) {
+		long start = System.currentTimeMillis();
 		try {
-			for (int i = 1; i <= 10; i++) {
-				System.out.println(client.echo(message));
+			for (int i = 1; i <= 100000; i++) {
+				client.echo(message);
 			}
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		discover.close();
-
+		System.out.println("Time: " + (System.currentTimeMillis() - start));
 	}
 
 }

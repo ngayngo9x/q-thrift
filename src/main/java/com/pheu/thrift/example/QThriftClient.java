@@ -45,17 +45,27 @@ public class QThriftClient {
 			}
 		};
 
+		callService(qThriftExec);
+		callService(qThriftExec);
+		callService(qThriftExec);
+		callService(qThriftExec);
+		callService(qThriftExec);
+
+		discover.close();
+
+	}
+
+	private static void callService(QThriftExec<TestThriftService.Iface, Void, String> qThriftExec) {
+		long start = System.currentTimeMillis();
 		try {
-			for (int i = 1; i <= 10; i++) {
-				System.out.println(qThriftExec.exec());
+			for (int i = 1; i <= 100000; i++) {
+				qThriftExec.exec();
 			}
 		} catch (TException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		discover.close();
-
+		System.out.println("Time: " + (System.currentTimeMillis() - start));
 	}
 
 }
