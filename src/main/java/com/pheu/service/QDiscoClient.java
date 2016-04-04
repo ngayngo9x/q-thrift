@@ -1,4 +1,4 @@
-package com.pheu.service.client;
+package com.pheu.service;
 
 import com.google.common.base.Function;
 import com.google.common.base.Optional;

@@ -2,20 +2,20 @@ package com.pheu.thrift.client;
 
 import com.github.phantomthief.thrift.client.pool.ThriftConnectionPoolProvider;
 import com.google.common.base.Preconditions;
-import com.pheu.service.client.QServiceDiscover;
+import com.pheu.service.QServiceDiscover;
 
-public class QThriftProviderImpl<P> implements QThriftProvider<P> {
+public class QThriftProviderImpl<P> implements QThriftConnectionProvider<P> {
 
 	private ThriftConnectionPoolProvider poolProvider;
 	private QServiceDiscover<P> serverInfoProvider;
-	private QProtocolProvider protocalProvider;
+	//private QProtocolFactory<T> protocalProvider;
 	private QSelectorStrategy selectorStrategy;
 
 	public QThriftProviderImpl(ThriftConnectionPoolProvider poolProvider, QServiceDiscover<P> serverInfoProvider,
-			QProtocolProvider protocalProvider, QSelectorStrategy selectorStrategy) {
+			QSelectorStrategy selectorStrategy) {
 		this.poolProvider = poolProvider;
 		this.serverInfoProvider = serverInfoProvider;
-		this.protocalProvider = protocalProvider;
+		//this.protocalProvider = protocalProvider;
 		this.selectorStrategy = selectorStrategy;
 	}
 
@@ -23,13 +23,13 @@ public class QThriftProviderImpl<P> implements QThriftProvider<P> {
 		return poolProvider;
 	}
 
-	public QServiceDiscover<P> getServerInfoProvider() {
+	public QServiceDiscover<P> getServiceDiscoverProvider() {
 		return serverInfoProvider;
 	}
 
-	public QProtocolProvider getProtocalProvider() {
-		return protocalProvider;
-	}
+//	public QProtocolFactory<T> getProtocalProvider() {
+//		return protocalProvider;
+//	}
 
 	public QSelectorStrategy getSelectorStrategy() {
 		return selectorStrategy;
@@ -38,25 +38,25 @@ public class QThriftProviderImpl<P> implements QThriftProvider<P> {
 	public static class Builder<P> {
 		private ThriftConnectionPoolProvider poolProvider;
 		private QServiceDiscover<P> serverInfoProvider;
-		private QProtocolProvider protocalProvider;
+		//private QProtocolFactory<T> protocalProvider;
 		private QSelectorStrategy selectorStrategy;
 
-		public Builder<P> poolProvider(ThriftConnectionPoolProvider poolProvider) {
+		public Builder<P> withPoolProvider(ThriftConnectionPoolProvider poolProvider) {
 			this.poolProvider = poolProvider;
 			return this;
 		}
 
-		public Builder<P> serverInfoProvider(QServiceDiscover<P> serverInfoProvider) {
+		public Builder<P> serviceDiscoveryProvider(QServiceDiscover<P> serverInfoProvider) {
 			this.serverInfoProvider = serverInfoProvider;
 			return this;
 		}
 
-		public Builder<P> protocalProvider(QProtocolProvider protocalProvider) {
-			this.protocalProvider = protocalProvider;
-			return this;
-		}
+//		public Builder<T, P> withProtocalProvider(QProtocolFactory<T> protocalProvider) {
+//			this.protocalProvider = protocalProvider;
+//			return this;
+//		}
 
-		public Builder<P> selectorStrategy(QSelectorStrategy selectorStrategy) {
+		public Builder<P> withSelectorStrategy(QSelectorStrategy selectorStrategy) {
 			this.selectorStrategy = selectorStrategy;
 			return this;
 		}
@@ -64,10 +64,10 @@ public class QThriftProviderImpl<P> implements QThriftProvider<P> {
 		public QThriftProviderImpl<P> build() {
 			Preconditions.checkNotNull(this.poolProvider);
 			Preconditions.checkNotNull(this.serverInfoProvider);
-			Preconditions.checkNotNull(this.protocalProvider);
+			//Preconditions.checkNotNull(this.protocalProvider);
 			Preconditions.checkNotNull(this.selectorStrategy);
 			return new QThriftProviderImpl<P>(this.poolProvider, this.serverInfoProvider, 
-					this.protocalProvider, this.selectorStrategy);
+					this.selectorStrategy);
 		}
 	}
 

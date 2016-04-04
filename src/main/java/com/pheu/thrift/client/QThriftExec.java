@@ -4,35 +4,36 @@ package com.pheu.thrift.client;
 import java.util.List;
 
 import org.apache.thrift.TException;
-import org.apache.thrift.protocol.TProtocol;
 import org.apache.thrift.transport.TTransport;
 
 import com.github.phantomthief.thrift.client.exception.NoBackendException;
 import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.google.common.base.Preconditions;
 
-public abstract class QThriftExec<T, P> {
+public abstract class QThriftExec<T, P, R> {
 	
-	private QThriftProvider<P> provider;
+	private QThriftConnectionProvider<P> provider;
+	private QProtocolFactory<T> clientFactory;
 
-	public QThriftExec(QThriftProvider<P> provider) {
+	public QThriftExec(QThriftConnectionProvider<P> provider, QProtocolFactory<T> clientFactory) {
 		this.provider = provider;
+		this.clientFactory = clientFactory;
 	}
 
-	public T exec() throws TException {
+	public R exec() throws TException {
 		Preconditions.checkNotNull(provider);
 		
-		List<ThriftServerInfo> servers = provider.getServerInfoProvider().allServices();
+		List<ThriftServerInfo> servers = provider.getServiceDiscoverProvider().allServices();
 		if (servers == null || servers.isEmpty()) {
 			throw new NoBackendException();
 		}
         ThriftServerInfo selected = provider.getSelectorStrategy().choose(servers);
 
         TTransport transport = provider.getPoolProvider().getConnection(selected);
-        TProtocol protocol = provider.getProtocalProvider().getProtocol(transport);
+		T protocol = clientFactory.getProtocol(transport);
 		boolean success = true;
 		TException ex = null;
-		T e = null;
+		R e = null;
         try {
         	e = call(protocol);
 		} catch (TException ex1) {
@@ -49,5 +50,5 @@ public abstract class QThriftExec<T, P> {
         return e;
 	}
 
-	protected abstract T call(TProtocol protocol) throws TException;
+	protected abstract R call(T protocol) throws TException;
 }

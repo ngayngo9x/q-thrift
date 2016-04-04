@@ -1,4 +1,4 @@
-package com.pheu.service.client;
+package com.pheu.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class QServiceDiscoverImpl<P> implements QServiceDiscover<P> {
 		private int sleepBackoff = 200;
 		private int maxRetries = 5;
 
-		public Builder<T> serviceName(String serviceName) {
+		public Builder<T> withServiceName(String serviceName) {
 			this.serviceName = serviceName;
 			return this;
 		}
@@ -100,17 +100,17 @@ public class QServiceDiscoverImpl<P> implements QServiceDiscover<P> {
 			return this;
 		}
 
-		public Builder<T> connectionTimeout(int connectionTimeout) {
+		public Builder<T> withConnectionTimeout(int connectionTimeout) {
 			this.connectionTimeout = connectionTimeout;
 			return this;
 		}
 
-		public Builder<T> sessionTimeout(int sessionTimeout) {
+		public Builder<T> withSessionTimeout(int sessionTimeout) {
 			this.sessionTimeout = sessionTimeout;
 			return this;
 		}
 
-		public Builder<T> connectString(String connectString) {
+		public Builder<T> withConnectString(String connectString) {
 			this.connectString = connectString;
 			return this;
 		}

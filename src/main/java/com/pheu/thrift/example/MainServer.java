@@ -65,7 +65,7 @@ public class MainServer {
 					server.serve();
 				}
 			};
-			new Thread(r).start();;
+			new Thread(r).start();
 		} catch (TTransportException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

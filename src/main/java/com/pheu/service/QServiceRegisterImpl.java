@@ -1,4 +1,4 @@
-package com.pheu.service.client;
+package com.pheu.service;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

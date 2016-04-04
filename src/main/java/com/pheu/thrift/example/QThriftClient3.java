@@ -15,7 +15,7 @@ import com.pheu.thrift.client.QThriftExec;
 import com.pheu.thrift.client.QThriftConnectionProvider;
 import com.pheu.thrift.client.QThriftProviderImpl;
 
-public class QThriftClient {
+public class QThriftClient3 {
 
 	public static void main(String[] args) throws ServiceDiscoveryException {
 

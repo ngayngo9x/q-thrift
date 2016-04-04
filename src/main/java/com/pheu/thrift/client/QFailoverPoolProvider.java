@@ -13,8 +13,8 @@ import com.github.phantomthief.thrift.client.pool.ThriftConnectionPoolProvider;
 import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.github.phantomthief.thrift.client.pool.impl.DefaultThriftConnectionPoolImpl;
 import com.github.phantomthief.thrift.client.utils.FailoverCheckingStrategy;
-import com.pheu.service.client.QServiceDiscover;
-import com.pheu.service.client.ServiceDiscoveryException;
+import com.pheu.service.QServiceDiscover;
+import com.pheu.service.ServiceDiscoveryException;
 
 public class QFailoverPoolProvider<P> implements ThriftConnectionPoolProvider, QServiceDiscover<P> {
 	private final QServiceDiscover<P> discover;

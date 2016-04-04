@@ -7,7 +7,18 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
 		<curator.version>2.9.0</curator.version>
+		<commons-pool2.version>2.4.2</commons-pool2.version>
+		<thrift.version>0.9.2</thrift.version>
+		<slf4j-api.version>1.7.19</slf4j-api.version>
+		<guava.version>19.0</guava.version>
+		<javassist.version>3.20.0-GA</javassist.version>
+		<junit.version>4.12</junit.version>
+		<zookeeper.version>3.4.7</zookeeper.version>
+		<mockito-all.version>1.9.5</mockito-all.version>
+		<logback-classic.version>1.1.2</logback-classic.version>
+		<netty.version>4.0.35.Final</netty.version>
 	</properties>
 
 	<dependencies>
@@ -15,33 +26,33 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
-			<version>2.4.2</version>
+			<version>${commons-pool2.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.thrift</groupId>
 			<artifactId>libthrift</artifactId>
-			<version>0.9.2</version>
+			<version>${thrift.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.19</version>
+			<version>${slf4j-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>19.0</version>
+			<version>${guava.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.20.0-GA</version>
+			<version>${javassist.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- end pool -->
@@ -49,7 +60,7 @@
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
 			<artifactId>zookeeper</artifactId>
-			<version>3.4.7</version>
+			<version>${zookeeper.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>com.sun.jmx</groupId>
@@ -89,15 +100,23 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
-			<version>1.9.5</version>
+			<version>${mockito-all.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.2</version>
+			<version>${logback-classic.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Netty -->
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>${netty.version}</version>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<plugins>
