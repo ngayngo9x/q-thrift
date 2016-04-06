@@ -4,20 +4,21 @@ package com.pheu.thrift.client;
 import java.util.List;
 
 import org.apache.thrift.TException;
+import org.apache.thrift.TServiceClient;
 import org.apache.thrift.transport.TTransport;
 
 import com.github.phantomthief.thrift.client.exception.NoBackendException;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.google.common.base.Preconditions;
+import com.pheu.common.ThriftServerInfo;
 
-public abstract class QThriftExec<T, P, R> {
+public abstract class QThriftExec<T extends TServiceClient, R> {
 	
-	private QThriftConnectionProvider<P> provider;
-	private QProtocolFactory<T> clientFactory;
+	private QThriftConnectionProvider provider;
+	private QClientFactory<T> protocolFactory;
 
-	public QThriftExec(QThriftConnectionProvider<P> provider, QProtocolFactory<T> clientFactory) {
+	public QThriftExec(QThriftConnectionProvider provider, QClientFactory<T> protocolFactory) {
 		this.provider = provider;
-		this.clientFactory = clientFactory;
+		this.protocolFactory = protocolFactory;
 	}
 
 	public R exec() throws TException {
@@ -30,12 +31,13 @@ public abstract class QThriftExec<T, P, R> {
         ThriftServerInfo selected = provider.getSelectorStrategy().choose(servers);
 
         TTransport transport = provider.getPoolProvider().getConnection(selected);
-		T protocol = clientFactory.getProtocol(transport);
+        T t = protocolFactory.getClient(transport);
+
 		boolean success = true;
 		TException ex = null;
 		R e = null;
         try {
-        	e = call(protocol);
+        	e = call(t);
 		} catch (TException ex1) {
 			ex = ex1;
 			success = false;

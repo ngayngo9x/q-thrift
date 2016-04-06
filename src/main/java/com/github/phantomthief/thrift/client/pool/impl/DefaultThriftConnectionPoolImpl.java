@@ -19,7 +19,7 @@ import org.apache.thrift.transport.TTransport;
 import org.slf4j.Logger;
 
 import com.github.phantomthief.thrift.client.pool.ThriftConnectionPoolProvider;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
+import com.pheu.common.ThriftServerInfo;
 
 /**
  * <p>

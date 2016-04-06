@@ -16,9 +16,9 @@ import org.apache.thrift.transport.TTransport;
 
 import com.github.phantomthief.thrift.client.ThriftClient;
 import com.github.phantomthief.thrift.client.pool.ThriftConnectionPoolProvider;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.github.phantomthief.thrift.client.pool.impl.DefaultThriftConnectionPoolImpl;
 import com.github.phantomthief.thrift.client.utils.FailoverCheckingStrategy;
+import com.pheu.common.ThriftServerInfo;
 
 /**
  * <p>

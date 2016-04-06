@@ -2,7 +2,7 @@ package com.pheu.thrift.example;
 
 import java.util.List;
 
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
+import com.pheu.common.ThriftServerInfo;
 
 public interface ServiceInfoProvider {
 

@@ -17,10 +17,10 @@ import org.apache.thrift.transport.TTransport;
 import com.github.phantomthief.thrift.client.ThriftClient;
 import com.github.phantomthief.thrift.client.impl.FailoverThriftClientImpl;
 import com.github.phantomthief.thrift.client.impl.ThriftClientImpl;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.github.phantomthief.thrift.client.pool.impl.DefaultThriftConnectionPoolImpl;
 import com.github.phantomthief.thrift.client.utils.FailoverCheckingStrategy;
 import com.github.phantomthief.thrift.test.service.TestThriftService.Client;
+import com.pheu.common.ThriftServerInfo;
 
 /**
  * @author w.vela

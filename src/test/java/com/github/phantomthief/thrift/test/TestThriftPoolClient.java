@@ -16,9 +16,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 
 import com.github.phantomthief.thrift.client.impl.ThriftClientImpl;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.github.phantomthief.thrift.test.service.TestThriftService.Client;
 import com.google.common.util.concurrent.MoreExecutors;
+import com.pheu.common.ThriftServerInfo;
 
 /**
  * @author w.vela

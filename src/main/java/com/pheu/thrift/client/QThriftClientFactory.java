@@ -9,18 +9,18 @@ import java.util.List;
 import org.apache.thrift.transport.TTransport;
 
 import com.github.phantomthief.thrift.client.exception.NoBackendException;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
+import com.pheu.common.ThriftServerInfo;
 
-public class QThriftClientFactory<P> {
+public class QThriftClientFactory {
 
-	private QThriftConnectionProvider<P> provider;
+	private QThriftConnectionProvider provider;
 
-	public QThriftClientFactory(QThriftConnectionProvider<P> provider) {
+	public QThriftClientFactory(QThriftConnectionProvider provider) {
 		this.provider = provider;
 	}
 
-	public <T> T create(Class<T> serviceInterface, QProtocolFactory<T> clientFactory) {
-		ThriftCaller<T, P> caller = new ThriftCaller<>(provider, clientFactory);
+	public <T> T create(Class<T> serviceInterface, QClientFactory<T> protocolFactory) {
+		ThriftCaller<T> caller = new ThriftCaller<>(serviceInterface, provider, protocolFactory);
 
 		@SuppressWarnings("unchecked")
 		T instance = (T) Proxy.newProxyInstance(serviceInterface.getClassLoader(), new Class<?>[] { serviceInterface },
@@ -28,13 +28,13 @@ public class QThriftClientFactory<P> {
 		return instance;
 	}
 
-	private static class ThriftCaller<T, P> {
-		private QThriftConnectionProvider<P> provider;
-		private QProtocolFactory<T> clientFactory;
-
-		public ThriftCaller(QThriftConnectionProvider<P> provider, QProtocolFactory<T> clientFactory) {
+	private static class ThriftCaller<T> {
+		private QThriftConnectionProvider provider;
+		private QClientFactory<T> protocolFactory;
+		
+		public ThriftCaller(Class<T> serviceInterface, QThriftConnectionProvider provider, QClientFactory<T> protocolFactory) {
 			this.provider = provider;
-			this.clientFactory = clientFactory;
+			this.protocolFactory = protocolFactory;
 		}
 
 		public Object call(Method method, Object[] args) {
@@ -45,12 +45,12 @@ public class QThriftClientFactory<P> {
 			ThriftServerInfo selected = provider.getSelectorStrategy().choose(servers);
 
 			TTransport transport = provider.getPoolProvider().getConnection(selected);
-			T protocol = clientFactory.getProtocol(transport);
+			T t = protocolFactory.getClient(transport);
 
 			boolean success = false;
 			Object result = null;
 			try {
-				result = invoke(protocol, method, args);
+				result = invoke(t, method, args);
 				success = true;
 			} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 				System.out.println(e.getMessage());
@@ -71,11 +71,11 @@ public class QThriftClientFactory<P> {
 
 	}
 
-	private static class ThriftHandler<T, P> implements InvocationHandler {
+	private static class ThriftHandler<T> implements InvocationHandler {
 
-		private ThriftCaller<T, P> caller;
+		private ThriftCaller<T> caller;
 
-		public ThriftHandler(ThriftCaller<T, P> caller) {
+		public ThriftHandler(ThriftCaller<T> caller) {
 			this.caller = caller;
 		}
 

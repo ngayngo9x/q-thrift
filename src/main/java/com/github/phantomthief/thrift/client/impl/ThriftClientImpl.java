@@ -16,9 +16,9 @@ import org.apache.thrift.transport.TTransport;
 import com.github.phantomthief.thrift.client.ThriftClient;
 import com.github.phantomthief.thrift.client.exception.NoBackendException;
 import com.github.phantomthief.thrift.client.pool.ThriftConnectionPoolProvider;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
 import com.github.phantomthief.thrift.client.pool.impl.DefaultThriftConnectionPoolImpl;
 import com.github.phantomthief.thrift.client.utils.ThriftClientUtils;
+import com.pheu.common.ThriftServerInfo;
 
 import javassist.util.proxy.Proxy;
 import javassist.util.proxy.ProxyFactory;

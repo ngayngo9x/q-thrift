@@ -23,12 +23,15 @@ public class MainServer {
 	
 		TestThriftService.Iface handler = new EchoHandler(9090);
 		TestThriftService.Iface handler2 = new EchoHandler(9091);
+		TestThriftService.Iface handler3 = new EchoHandler(9092);
 		
 		TProcessor processor = new TestThriftService.Processor<>(handler);
 		TProcessor processor2 = new TestThriftService.Processor<>(handler2);
+		TProcessor processor3 = new TestThriftService.Processor<>(handler3);
 		
 		start(processor, 9090);
 		start(processor2, 9091);
+		start(processor3, 9092);
 		
 				
 	}

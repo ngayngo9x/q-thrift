@@ -3,7 +3,7 @@ package com.pheu.thrift.client;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
+import com.pheu.common.ThriftServerInfo;
 
 public class QRoundRobinSelectorStrategy implements QSelectorStrategy {
 	private final AtomicLong idx = new AtomicLong(0);

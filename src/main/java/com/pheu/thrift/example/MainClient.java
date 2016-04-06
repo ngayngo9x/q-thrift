@@ -6,7 +6,7 @@ import org.apache.thrift.TException;
 
 import com.github.phantomthief.thrift.client.ThriftClient;
 import com.github.phantomthief.thrift.client.impl.ThriftClientImpl;
-import com.github.phantomthief.thrift.client.pool.ThriftServerInfo;
+import com.pheu.common.ThriftServerInfo;
 
 public class MainClient {
 	public static void main(String[] args) {
